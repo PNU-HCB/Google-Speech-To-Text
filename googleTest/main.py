@@ -2,14 +2,15 @@
 import os
 from google.cloud import speech
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'json 파일 경로'
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'json 경로'
 
 # Instantiates a client
 client = speech.SpeechClient()
 
 # The name of the audio file to transcribe
 # wav 파일도 지원 가능
-gcs_uri = "gs://cloud-samples-data/speech/brooklyn_bridge.raw"
+# google cloud storage 버킷에 올린 경로
+gcs_uri= "파일 경로"
 
 audio = speech.RecognitionAudio(uri=gcs_uri)
 
@@ -18,7 +19,7 @@ config = speech.RecognitionConfig(
     encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
     # 오디오 샘플링 레이트를 지정, FLAC 및 WAV 파일의 경우 encoding은 필수가 아닌 선택 사항
     # 8000Hz ~ 48000Hz 사이의 샘플링 레이트가 지원, 16000Hz로 오디오 캡처하는 것을 권장
-    sample_rate_hertz=16000,
+    sample_rate_hertz=8000,
     # 제공된 오디오의 음성 인식에 사용할 언어와 리전/지역을 포함
     language_code="en-US",
     # 타임스탬프를 찍을 수 있게 허용
