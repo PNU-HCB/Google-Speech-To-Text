@@ -8,6 +8,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'json 파일 경로'
 client = speech.SpeechClient()
 
 # The name of the audio file to transcribe
+# wav 파일도 지원 가능
 gcs_uri = "gs://cloud-samples-data/speech/brooklyn_bridge.raw"
 
 audio = speech.RecognitionAudio(uri=gcs_uri)
